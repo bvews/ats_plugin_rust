@@ -114,17 +114,17 @@ pub extern "C" fn GetPluginVersion() -> i32 {
 
 // Called when the train is loaded
 #[no_mangle]
-pub extern "C" fn SetVehicleSpec(vehicle_spec: AtsVehicleSpec) {
+pub extern "C" fn SetVehicleSpec(_vehicle_spec: AtsVehicleSpec) {
 }
 
 // Called when the game is started
 #[no_mangle]
-pub extern "C" fn Initialize(brake: i32) {
+pub extern "C" fn Initialize(_brake: i32) {
 }
 
 // Called every frame
 #[no_mangle]
-pub extern "C" fn Elapse(vehicle_state: AtsVehicleState, panel: [i32; 256], sound: [i32; 256]) -> AtsHandles {
+pub extern "C" fn Elapse(_vehicle_state: AtsVehicleState, _panel: [i32; 256], _sound: [i32; 256]) -> AtsHandles {
     AtsHandles {
         brake: 0,
         power: 0,
@@ -135,32 +135,32 @@ pub extern "C" fn Elapse(vehicle_state: AtsVehicleState, panel: [i32; 256], soun
 
 // Called when the power is changed
 #[no_mangle]
-pub extern "C" fn SetPower(notch: i32) {
+pub extern "C" fn SetPower(_notch: i32) {
 }
 
 // Called when the brake is changed
 #[no_mangle]
-pub extern "C" fn SetBrake(notch: i32) {
+pub extern "C" fn SetBrake(_notch: i32) {
 }
 
 // Called when the reverser is changed
 #[no_mangle]
-pub extern "C" fn SetReverser(pos: i32) {
+pub extern "C" fn SetReverser(_pos: i32) {
 }
 
 // Called when any ATS key is pressed
 #[no_mangle]
-pub extern "C" fn KeyDown(ats_key_code: i32) {
+pub extern "C" fn KeyDown(_ats_key_code: i32) {
 }
 
 // Called when any ATS key is released
 #[no_mangle]
-pub extern "C" fn KeyUp(ats_key_code: i32) {
+pub extern "C" fn KeyUp(_ats_key_code: i32) {
 }
 
 // Called when the horn is used
 #[no_mangle]
-pub extern "C" fn HornBlow(horn_type: i32) {
+pub extern "C" fn HornBlow(_horn_type: i32) {
 }
 
 // Called when the door is opened
@@ -175,10 +175,10 @@ pub extern "C" fn DoorClose() {
 
 // Called when current signal is changed
 #[no_mangle]
-pub extern "C" fn SetSignal(signal: i32) {
+pub extern "C" fn SetSignal(_signal: i32) {
 }
 
 // Called when the beacon data is received
 #[no_mangle]
-pub extern "C" fn SetBeaconData(beacon_data: AtsBeaconData) {
+pub extern "C" fn SetBeaconData(_beacon_data: AtsBeaconData) {
 }
