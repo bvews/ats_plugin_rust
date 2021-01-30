@@ -79,7 +79,7 @@ struct AtsVehicleState {
 // Received Data from Beacon
 #[repr(C)]
 struct AtsBeaconData {
-    type: i32,        // Type of Beacon
+    beacon_type: i32, // Type of Beacon
     signal: i32,      // Signal of Connected Section
     distance: f32,    // Distance to Connected Section (m)
     optional: i32,    // Optional Data
