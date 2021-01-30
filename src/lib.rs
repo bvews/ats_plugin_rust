@@ -10,6 +10,8 @@
 // #define ATS_API __declspec(dllimport)
 // #endif
 
+#![allow(dead_code)]
+
 // ATS Plug-in Version
 const ATS_VERSION: i32 = 0x0002_0000;
 
