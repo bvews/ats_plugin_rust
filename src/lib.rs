@@ -54,7 +54,7 @@ const ATS_CONSTANTSPEED_DISABLE: i32 = 2;  // Disable
 
 // Vehicle Specification
 #[repr(C)]
-struct AtsVehicleSpec {
+pub struct AtsVehicleSpec {
     brake_notches: i32,    // Number of Brake Notches
     power_notches: i32,    // Number of Power Notches
     ats_notch: i32,        // ATS Cancel Notch
@@ -64,7 +64,7 @@ struct AtsVehicleSpec {
 
 // State Quantity of Vehicle
 #[repr(C)]
-struct AtsVehicleState {
+pub struct AtsVehicleState {
     location: f64,     // Train Position (Z-axis) (m)
     speed: f32,        // Train Speed (km/h)
     time: i32,         // Time (ms)
@@ -78,7 +78,7 @@ struct AtsVehicleState {
 
 // Received Data from Beacon
 #[repr(C)]
-struct AtsBeaconData {
+pub struct AtsBeaconData {
     beacon_type: i32, // Type of Beacon
     signal: i32,      // Signal of Connected Section
     distance: f32,    // Distance to Connected Section (m)
@@ -87,7 +87,7 @@ struct AtsBeaconData {
 
 // Train Operation Instruction
 #[repr(C)]
-struct AtsHandles {
+pub struct AtsHandles {
     brake: i32,          // Brake Notch
     power: i32,          // Power Notch
     reverser: i32,       // Reverser Position
