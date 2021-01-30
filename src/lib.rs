@@ -109,7 +109,7 @@ pub extern "C" fn Dispose() {
 // Returns the version numbers of ATS plug-in
 #[no_mangle]
 pub extern "C" fn GetPluginVersion() -> i32 {
-    0x00020000i32
+    ATS_VERSION
 }
 
 // Called when the train is loaded
