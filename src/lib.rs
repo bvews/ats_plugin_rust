@@ -124,7 +124,7 @@ pub extern "C" fn Initialize(_brake: i32) {
 
 // Called every frame
 #[no_mangle]
-pub extern "C" fn Elapse(_vehicle_state: AtsVehicleState, _panel: [i32; 256], _sound: [i32; 256]) -> AtsHandles {
+pub extern "C" fn Elapse(_vehicle_state: AtsVehicleState, _panel: *const [i32; 256], _sound: *const [i32; 256]) -> AtsHandles {
     AtsHandles {
         brake: 0,
         power: 0,
