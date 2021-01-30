@@ -98,29 +98,29 @@ pub struct AtsHandles {
 
 // Called when this plug-in is loaded
 #[no_mangle]
-pub extern "C" fn Load() {}
+pub extern "C" fn load() {}
 
-// Called when this plug-in is unloaded
+// Called when this plug_in is unloaded
 #[no_mangle]
-pub extern "C" fn Dispose() {}
+pub extern "C" fn dispose() {}
 
 // Returns the version numbers of ATS plug-in
 #[no_mangle]
-pub extern "C" fn GetPluginVersion() -> i32 {
+pub extern "C" fn get_plugin_version() -> i32 {
     ATS_VERSION
 }
 
 // Called when the train is loaded
 #[no_mangle]
-pub extern "C" fn SetVehicleSpec(_vehicle_spec: AtsVehicleSpec) {}
+pub extern "C" fn set_vehicle_spec(_vehicle_spec: AtsVehicleSpec) {}
 
 // Called when the game is started
 #[no_mangle]
-pub extern "C" fn Initialize(_brake: i32) {}
+pub extern "C" fn initialize(_brake: i32) {}
 
 // Called every frame
 #[no_mangle]
-pub extern "C" fn Elapse(
+pub extern "C" fn elapse(
     _vehicle_state: AtsVehicleState,
     _panel: *const [i32; 256],
     _sound: *const [i32; 256],
@@ -135,40 +135,40 @@ pub extern "C" fn Elapse(
 
 // Called when the power is changed
 #[no_mangle]
-pub extern "C" fn SetPower(_notch: i32) {}
+pub extern "C" fn set_power(_notch: i32) {}
 
 // Called when the brake is changed
 #[no_mangle]
-pub extern "C" fn SetBrake(_notch: i32) {}
+pub extern "C" fn set_brake(_notch: i32) {}
 
 // Called when the reverser is changed
 #[no_mangle]
-pub extern "C" fn SetReverser(_pos: i32) {}
+pub extern "C" fn set_reverser(_pos: i32) {}
 
 // Called when any ATS key is pressed
 #[no_mangle]
-pub extern "C" fn KeyDown(_ats_key_code: i32) {}
+pub extern "C" fn key_down(_ats_key_code: i32) {}
 
 // Called when any ATS key is released
 #[no_mangle]
-pub extern "C" fn KeyUp(_ats_key_code: i32) {}
+pub extern "C" fn key_up(_ats_key_code: i32) {}
 
 // Called when the horn is used
 #[no_mangle]
-pub extern "C" fn HornBlow(_horn_type: i32) {}
+pub extern "C" fn horn_blow(_horn_type: i32) {}
 
 // Called when the door is opened
 #[no_mangle]
-pub extern "C" fn DoorOpen() {}
+pub extern "C" fn door_open() {}
 
 // Called when the door is closed
 #[no_mangle]
-pub extern "C" fn DoorClose() {}
+pub extern "C" fn door_close() {}
 
 // Called when current signal is changed
 #[no_mangle]
-pub extern "C" fn SetSignal(_signal: i32) {}
+pub extern "C" fn set_signal(_signal: i32) {}
 
 // Called when the beacon data is received
 #[no_mangle]
-pub extern "C" fn SetBeaconData(_beacon_data: AtsBeaconData) {}
+pub extern "C" fn set_beacon_data(_beacon_data: AtsBeaconData) {}
