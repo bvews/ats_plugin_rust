@@ -1,2 +1,2 @@
 [build]
-rustflags = ["-Clink-args=/DEBUG:NONE /DEF:ats_plugin.def"]
+rustflags = ["-Clink-args=/DEBUG:NONE"]
