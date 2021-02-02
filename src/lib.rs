@@ -97,6 +97,8 @@ pub struct AtsHandles {
     constant_speed: i32, // Constant Speed Control
 }
 
+const ARRAY_LENGTH: usize = 256;
+
 use std::cell::RefCell;
 
 thread_local! {
@@ -161,8 +163,8 @@ pub extern "C" fn Elapse(
     p_panel: *mut i32,
     p_sound: *mut i32,
 ) -> AtsHandles {
-    let panel = unsafe { std::slice::from_raw_parts_mut(p_panel, 256) };
-    let sound = unsafe { std::slice::from_raw_parts_mut(p_sound, 256) };
+    let panel = unsafe { std::slice::from_raw_parts_mut(p_panel, ARRAY_LENGTH) };
+    let sound = unsafe { std::slice::from_raw_parts_mut(p_sound, ARRAY_LENGTH) };
 
     let mut brake = 0_i32;
     let mut power = 0_i32;
