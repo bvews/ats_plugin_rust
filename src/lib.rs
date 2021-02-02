@@ -11,6 +11,7 @@
 // #endif
 
 #![allow(dead_code)]
+#![cfg(windows)]
 
 // ATS Plug-in Version
 const ATS_VERSION: i32 = 0x0002_0000;
@@ -94,6 +95,28 @@ pub struct AtsHandles {
     power: i32,          // Power Notch
     reverser: i32,       // Reverser Position
     constant_speed: i32, // Constant Speed Control
+}
+
+use winapi::shared::minwindef;
+use winapi::shared::minwindef::{BOOL, DWORD, HINSTANCE, LPVOID};
+
+#[no_mangle]
+#[allow(non_snake_case, unused_variables)]
+extern "system" fn DllMain(dll_module: HINSTANCE, call_reason: DWORD, reserved: LPVOID) -> BOOL {
+    const DLL_PROCESS_ATTACH: DWORD = 1;
+    const DLL_THREAD_ATTACH: DWORD = 2;
+    const DLL_THREAD_DETACH: DWORD = 3;
+    const DLL_PROCESS_DETACH: DWORD = 0;
+
+    match call_reason {
+        DLL_PROCESS_ATTACH => (),
+        DLL_THREAD_ATTACH => (),
+        DLL_THREAD_DETACH => (),
+        DLL_PROCESS_DETACH => (),
+        _ => (),
+    }
+
+    minwindef::TRUE
 }
 
 // Called when this plug-in is loaded
