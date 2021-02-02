@@ -150,9 +150,11 @@ pub extern "C" fn Initialize(_brake: i32) {}
 #[allow(non_snake_case, unused_variables)]
 pub extern "C" fn Elapse(
     _vehicle_state: AtsVehicleState,
-    _panel: *const [i32; 256],
-    _sound: *const [i32; 256],
+    p_panel: *mut i32,
+    p_sound: *mut i32,
 ) -> AtsHandles {
+    let panel = unsafe { std::slice::from_raw_parts_mut(p_panel, 256) };
+    let sound = unsafe { std::slice::from_raw_parts_mut(p_sound, 256) };
     AtsHandles {
         brake: 0,
         power: 0,
