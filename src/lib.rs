@@ -97,6 +97,14 @@ pub struct AtsHandles {
     constant_speed: i32, // Constant Speed Control
 }
 
+use std::cell::RefCell;
+
+thread_local! {
+    static POWER: RefCell<i32> = RefCell::new(0);
+    static BRAKE: RefCell<i32> = RefCell::new(0);
+    static REVERSER: RefCell<i32> = RefCell::new(0);
+}
+
 use winapi::shared::minwindef;
 use winapi::shared::minwindef::{BOOL, DWORD, HINSTANCE, LPVOID};
 
@@ -155,10 +163,24 @@ pub extern "C" fn Elapse(
 ) -> AtsHandles {
     let panel = unsafe { std::slice::from_raw_parts_mut(p_panel, 256) };
     let sound = unsafe { std::slice::from_raw_parts_mut(p_sound, 256) };
+
+    let mut brake = 0_i32;
+    let mut power = 0_i32;
+    let mut reverser = 0_i32;
+    BRAKE.with(|value| {
+        brake = *value.borrow();
+    });
+    POWER.with(|value| {
+        power = *value.borrow();
+    });
+    REVERSER.with(|value| {
+        reverser = *value.borrow();
+    });
+
     AtsHandles {
-        brake: 0,
-        power: 0,
-        reverser: 1,
+        brake,
+        power,
+        reverser,
         constant_speed: ATS_CONSTANTSPEED_CONTINUE,
     }
 }
@@ -166,17 +188,29 @@ pub extern "C" fn Elapse(
 // Called when the power is changed
 #[no_mangle]
 #[allow(non_snake_case, unused_variables)]
-pub extern "C" fn SetPower(_notch: i32) {}
+pub extern "C" fn SetPower(_notch: i32) {
+    POWER.with(|value| {
+        *value.borrow_mut() = _notch;
+    });
+}
 
 // Called when the brake is changed
 #[no_mangle]
 #[allow(non_snake_case, unused_variables)]
-pub extern "C" fn SetBrake(_notch: i32) {}
+pub extern "C" fn SetBrake(_notch: i32) {
+    BRAKE.with(|value| {
+        *value.borrow_mut() = _notch;
+    });
+}
 
 // Called when the reverser is changed
 #[no_mangle]
 #[allow(non_snake_case, unused_variables)]
-pub extern "C" fn SetReverser(_pos: i32) {}
+pub extern "C" fn SetReverser(_pos: i32) {
+    REVERSER.with(|value| {
+        *value.borrow_mut() = _pos;
+    });
+}
 
 // Called when any ATS key is pressed
 #[no_mangle]
