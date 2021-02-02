@@ -121,29 +121,34 @@ extern "system" fn DllMain(dll_module: HINSTANCE, call_reason: DWORD, reserved: 
 
 // Called when this plug-in is loaded
 #[no_mangle]
-pub extern "C" fn load() {}
+#[allow(non_snake_case, unused_variables)]
+pub extern "C" fn Load() {}
 
 // Called when this plug_in is unloaded
 #[no_mangle]
-pub extern "C" fn dispose() {}
+#[allow(non_snake_case, unused_variables)]
+pub extern "C" fn Dispose() {}
 
 // Returns the version numbers of ATS plug-in
 #[no_mangle]
-pub extern "C" fn get_plugin_version() -> i32 {
+pub extern "C" fn GetPluginVersion() -> i32 {
     ATS_VERSION
 }
 
 // Called when the train is loaded
 #[no_mangle]
-pub extern "C" fn set_vehicle_spec(_vehicle_spec: AtsVehicleSpec) {}
+#[allow(non_snake_case, unused_variables)]
+pub extern "C" fn SetVehicleSpec(_vehicle_spec: AtsVehicleSpec) {}
 
 // Called when the game is started
 #[no_mangle]
-pub extern "C" fn initialize(_brake: i32) {}
+#[allow(non_snake_case, unused_variables)]
+pub extern "C" fn Initialize(_brake: i32) {}
 
 // Called every frame
 #[no_mangle]
-pub extern "C" fn elapse(
+#[allow(non_snake_case, unused_variables)]
+pub extern "C" fn Elapse(
     _vehicle_state: AtsVehicleState,
     _panel: *const [i32; 256],
     _sound: *const [i32; 256],
@@ -158,40 +163,50 @@ pub extern "C" fn elapse(
 
 // Called when the power is changed
 #[no_mangle]
-pub extern "C" fn set_power(_notch: i32) {}
+#[allow(non_snake_case, unused_variables)]
+pub extern "C" fn SetPower(_notch: i32) {}
 
 // Called when the brake is changed
 #[no_mangle]
-pub extern "C" fn set_brake(_notch: i32) {}
+#[allow(non_snake_case, unused_variables)]
+pub extern "C" fn SetBrake(_notch: i32) {}
 
 // Called when the reverser is changed
 #[no_mangle]
-pub extern "C" fn set_reverser(_pos: i32) {}
+#[allow(non_snake_case, unused_variables)]
+pub extern "C" fn SetReverser(_pos: i32) {}
 
 // Called when any ATS key is pressed
 #[no_mangle]
-pub extern "C" fn key_down(_ats_key_code: i32) {}
+#[allow(non_snake_case, unused_variables)]
+pub extern "C" fn KeyDown(_ats_key_code: i32) {}
 
 // Called when any ATS key is released
 #[no_mangle]
-pub extern "C" fn key_up(_ats_key_code: i32) {}
+#[allow(non_snake_case, unused_variables)]
+pub extern "C" fn KeyUp(_ats_key_code: i32) {}
 
 // Called when the horn is used
 #[no_mangle]
-pub extern "C" fn horn_blow(_horn_type: i32) {}
+#[allow(non_snake_case, unused_variables)]
+pub extern "C" fn HornBlow(_horn_type: i32) {}
 
 // Called when the door is opened
 #[no_mangle]
-pub extern "C" fn door_open() {}
+#[allow(non_snake_case, unused_variables)]
+pub extern "C" fn DoorOpen() {}
 
 // Called when the door is closed
 #[no_mangle]
-pub extern "C" fn door_close() {}
+#[allow(non_snake_case, unused_variables)]
+pub extern "C" fn DoorClose() {}
 
 // Called when current signal is changed
 #[no_mangle]
-pub extern "C" fn set_signal(_signal: i32) {}
+#[allow(non_snake_case, unused_variables)]
+pub extern "C" fn SetSignal(_signal: i32) {}
 
 // Called when the beacon data is received
 #[no_mangle]
-pub extern "C" fn set_beacon_data(_beacon_data: AtsBeaconData) {}
+#[allow(non_snake_case, unused_variables)]
+pub extern "C" fn SetBeaconData(_beacon_data: AtsBeaconData) {}
