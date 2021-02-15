@@ -72,23 +72,10 @@ pub extern "C" fn Elapse(
     let panel = unsafe { std::slice::from_raw_parts_mut(p_panel, ARRAY_LENGTH) };
     let sound = unsafe { std::slice::from_raw_parts_mut(p_sound, ARRAY_LENGTH) };
 
-    let mut brake = 0_i32;
-    let mut power = 0_i32;
-    let mut reverser = 0_i32;
-    BRAKE.with(|value| {
-        brake = *value.borrow();
-    });
-    POWER.with(|value| {
-        power = *value.borrow();
-    });
-    REVERSER.with(|value| {
-        reverser = *value.borrow();
-    });
-
     AtsHandles {
-        brake,
-        power,
-        reverser,
+        brake: BRAKE.with(|value| *value.borrow()),
+        power: POWER.with(|value| *value.borrow()),
+        reverser: REVERSER.with(|value| *value.borrow()),
         constant_speed: ATS_CONSTANTSPEED_CONTINUE,
     }
 }
